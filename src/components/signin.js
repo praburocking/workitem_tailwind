@@ -4,9 +4,13 @@ import {user as userRepo,auth as authRepo} from "../store/atoms"
 import { useRecoilState, useRecoilValue } from "recoil";
 import {login} from '../services/connectToServer'
 import {setTokenCookie} from '../util/common_utils'
+import { Transition } from '@headlessui/react'
 import {
   useHistory
 } from "react-router-dom";
+
+import  CustomSnackbar from './utilComponents/snackbar'
+import Alert from "./utilComponents/alert"
 
 const Signin = () => {
   const [userData,setUserData]=useRecoilState(userRepo);
@@ -32,11 +36,21 @@ const Signin = () => {
 
   return (
     <>
-      <div className="pt-5 text-lg tracking-widest text-3xl">
+      <Transition
+        show={true}
+        enter="transition-opacity duration-250"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+      <div className="pt-5 text-lg tracking-widest text-3xl mb-5">
         <span className="font-bold "> Login </span>to Contine
       </div>
-
-      <div className="w-100 h-250 mt-10">
+       < CustomSnackbar type="error" message="invalid credentials" onclose={null}/> 
+       <Alert color="blue" message="invalid credentials"/>
+      <div className="w-100 h-250 mt-5">
         <div className="flex flex-col h-100">
           <TextField
             id="standard-basic"
@@ -61,6 +75,7 @@ const Signin = () => {
           </Button>
         </div>
       </div>
+      </Transition>
     </>
   );
 };
