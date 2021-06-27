@@ -8,7 +8,7 @@ import { Transition } from '@headlessui/react'
 import {
   useHistory
 } from "react-router-dom";
-
+import Paper from '@material-ui/core/Paper';
 import  CustomSnackbar from './utilComponents/snackbar'
 import Alert from "./utilComponents/alert"
 
@@ -18,6 +18,13 @@ const Signin = () => {
   let history = useHistory();
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  const [alertData,setAlertData]=useState({show:false,message:"this is teset",color:"blue"});
+
+  const onAlertClose=()=>{  
+    console.log("test")
+    setAlertData({...{alertData},show:false});
+  }
+  
 
   const Handlelogin=async (email,password)=>{
     const reqObj={"email":email,"password":password};
@@ -30,26 +37,18 @@ const Signin = () => {
 
     }
     else{
-      //exception handle
+     setAlertData({...{alertData},color:"red",message:response.data&&response.data.detail?response.data.detail:"unknow error",show:true});
     }
   }
 
   return (
-    <>
-      <Transition
-        show={true}
-        enter="transition-opacity duration-250"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
+   <>
       <div className="pt-5 text-lg tracking-widest text-3xl mb-5">
         <span className="font-bold "> Login </span>to Contine
       </div>
-       < CustomSnackbar type="error" message="invalid credentials" onclose={null}/> 
-       <Alert color="blue" message="invalid credentials"/>
+       < CustomSnackbar type="error" message="invalid credentials" onclose={onAlertClose}/> 
+      
+       <Alert show={alertData.show} message={alertData.message} color={alertData.color} onClose={()=>onAlertClose()}/>
       <div className="w-100 h-250 mt-5">
         <div className="flex flex-col h-100">
           <TextField
@@ -75,8 +74,7 @@ const Signin = () => {
           </Button>
         </div>
       </div>
-      </Transition>
-    </>
+   </>
   );
 };
 

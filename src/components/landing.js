@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import Signin from "./signin";
 import SignUp from "./signup";
+import Slide from '@material-ui/core/Slide';
 
 const Landing = (props) => {
   const [isLogin, setLogin] = useState(props.operation==="login");
