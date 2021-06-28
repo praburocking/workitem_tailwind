@@ -38,7 +38,7 @@
   "scripts": {
     "build:css": "cross-env TAILWIND_MODE=build NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/index.css",
     "watch:css": "cross-env TAILWIND_MODE=watch NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/index.css --watch",
-    "env:dev": "cross-env NODE_ENV=development",
+    "env:dev": "cross-env NODE_ENV=development REACT_APP_SERVER_URL=workmachine.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
     "env:prod": "cross-env NODE_ENV=production",
     "react-scripts:start": "react-scripts start",
     "react-scripts:build": "react-scripts build",

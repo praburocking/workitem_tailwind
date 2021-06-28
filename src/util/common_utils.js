@@ -21,7 +21,8 @@ expireAfter.setTime(expireAfter.getTime() + (exdays*24*60*60*1000));
 document.cookie=cname+"="+cvalue+";+ domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
 
  
-  }
+  } // "env:dev": "cross-env NODE_ENV=development REACT_APP_SERVER_URL=workmachine.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
+  // "env:prod": "cross-env NODE_ENV=production",
 
  export  function getCookie(cname) {
     var name = cname + "=";
