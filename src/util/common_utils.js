@@ -1,20 +1,32 @@
 import constants from './constants';
 //import dataUtil from '../components/dataUtil'
+require('dotenv').config()
 
 export function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
+    //var d = new Date();
     if(!exdays)
     {
         exdays=30;
     }
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    //d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    //var expires = "expires="+ d.toUTCString();
+    //document.cookie = cname + "=" + cvalue + ";" + expires + ";"+"domain=workmachine.com";
+var baseDomain = '.'+process.env.REACT_APP_SERVER_URL;
+var expireAfter = new Date();
+ 
+//setting up  cookie expire date after a week
+expireAfter.setTime(expireAfter.getTime() + (exdays*24*60*60*1000));
+ 
+//now setup cookie
+document.cookie=cname+"="+cvalue+";+ domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
+
+ 
   }
 
  export  function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
+    console.log('cookie ==>',decodedCookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
       var c = ca[i];

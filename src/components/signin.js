@@ -1,9 +1,9 @@
 import React,{useState} from "react";
 import { TextField, Button } from "@material-ui/core";
-import {user as userRepo,auth as authRepo} from "../store/atoms"
+import {user as userRepo,auth as authRepo,org as orgRepo} from "../store/atoms"
 import { useRecoilState, useRecoilValue } from "recoil";
 import {login} from '../services/connectToServer'
-import {setTokenCookie} from '../util/common_utils'
+import {setTokenCookie,setCookie} from '../util/common_utils'
 import { Transition } from '@headlessui/react'
 import {
   useHistory
@@ -15,6 +15,7 @@ import Alert from "./utilComponents/alert"
 const Signin = () => {
   const [userData,setUserData]=useRecoilState(userRepo);
   const [authData,setAthuData]=useRecoilState(authRepo);
+  const [orgData,setOrgData]=useRecoilState(orgRepo);
   let history = useHistory();
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
@@ -33,6 +34,8 @@ const Signin = () => {
       setUserData(response.data.user)
       setTokenCookie(response.data.authtoken);
       setAthuData(response.data.authtoken);
+      setOrgData(response.data.org);
+      setCookie("domain",response.data.org.domain,1);
       history.push("/home");
 
     }

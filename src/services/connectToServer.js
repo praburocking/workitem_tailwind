@@ -4,7 +4,7 @@ require('dotenv').config()
 
 console.log("server url",process.env);
 
-let url="http://workmachine.com:8000/api/"
+let url=window.api_domain+"/api/"
 
 
 //url="https://127.0.0.1:8000/api/v1/"
