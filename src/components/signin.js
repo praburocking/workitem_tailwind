@@ -30,13 +30,15 @@ const Signin = () => {
   const Handlelogin=async (email,password)=>{
     const reqObj={"email":email,"password":password};
     const response =await login(reqObj);
+    history.push("/home");
+
     if(response.status===200){
       setUserData(response.data.user)
       setTokenCookie(response.data.authtoken);
       setAthuData(response.data.authtoken);
       setOrgData(response.data.org);
       setCookie("domain",response.data.org.domain,1);
-      history.push("/home");
+      window.location="http://"+response.data.org.domain+":3000"
 
     }
     else{

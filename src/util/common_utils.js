@@ -11,14 +11,15 @@ export function setCookie(cname, cvalue, exdays) {
     //d.setTime(d.getTime() + (exdays*24*60*60*1000));
     //var expires = "expires="+ d.toUTCString();
     //document.cookie = cname + "=" + cvalue + ";" + expires + ";"+"domain=workmachine.com";
-var baseDomain = '.'+process.env.REACT_APP_SERVER_URL;
+var baseDomain = '.workmachine.com';//+process.env.REACT_APP_SERVER_URL;
+console.log("baseDomain ",baseDomain)
 var expireAfter = new Date();
  
 //setting up  cookie expire date after a week
 expireAfter.setTime(expireAfter.getTime() + (exdays*24*60*60*1000));
  
 //now setup cookie
-document.cookie=cname+"="+cvalue+";+ domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
+document.cookie=cname+"="+cvalue+"; domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
 
  
   } // "env:dev": "cross-env NODE_ENV=development REACT_APP_SERVER_URL=workmachine.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
