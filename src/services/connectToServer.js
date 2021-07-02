@@ -24,16 +24,17 @@ console.log("server url",process.env);
 export const getServerUrl=()=>{
     return window.api_domain;
 }
-// export const signup=async (userData)=>
-// {
-//     try {
-//         const response = await axios.post(signup_url, userData);
-//         return response;
-//     }
-//     catch (error) {
-//         return error.response;
-//     }
-// }
+export const signup=async (userData)=>
+{
+    try {
+        let signup_url=getServerUrl()+"/api/iam/signup";
+        const response = await axios.post(signup_url, userData);
+        return response;
+    }
+    catch (error) {
+        return error.response;
+    }
+}
 
 // export const signout=async ()=>
 // {

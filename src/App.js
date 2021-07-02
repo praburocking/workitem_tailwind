@@ -28,7 +28,7 @@ function App(props) {
           window.api_domain=process.env.REACT_APP_SERVER_PROTOCOL+"://"+domain+":"+process.env.REACT_APP_SERVER_PORT;
           const response=await getUser();
           console.log("user response ==>",response)
-          if(response.status===200){
+          if(response && response.status===200){
             const token=getCookie("token");
             setAuthData(token);
             if(!window.location.host.includes(domain)){
