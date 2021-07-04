@@ -1,11 +1,12 @@
 import React,{useEffect} from "react";
-import Landing from "./components/landing";
+import LoginAndSignup from "./components/loginAndSignup";
 import Home from "./components/home";
 import LoginScreen from "./components/loginScreen"
 import { RecoilRoot,useRecoilState,useRecoilValue } from "recoil";
 import { verifyAndGetToken,getCookie,deleteToken,deleteCookie } from "./util/common_utils";
 import { auth as authRepo } from "./store/atoms";
 import {getUser} from './services/connectToServer'
+import LandingPage from './components/landing'
 //import { useRecoilState, useRecoilValue } from "recoil";
 import {
   Switch,
@@ -78,9 +79,9 @@ function App(props) {
   return(
   <RecoilRoot>
   <Switch location={props.location}>
-    <Route exact path ="/" render={()=>userExist()?<Redirect to="/home"/>:<Landing operation="login"/>} ></Route>
-    <Route exact path ="/login" render={()=>userExist()?<Redirect to="/home"/>:<Landing operation="login"/>} ></Route>
-    <Route exact path ="/signup" render={()=>userExist()?<Redirect to="/home"/>:<Landing operation="signup"/>} ></Route>
+    <Route exact path ="/" render={()=>userExist()?<Redirect to="/home"/>:<LandingPage/>} ></Route>
+    <Route exact path ="/login" render={()=>userExist()?<Redirect to="/home"/>:<LoginAndSignup operation="login"/>} ></Route>
+    <Route exact path ="/signup" render={()=>userExist()?<Redirect to="/home"/>:<LoginAndSignup operation="signup"/>} ></Route>
     <Route exact path ="/home" render={()=>userExist()?<Home/>:<Redirect to="/login"/>} ></Route>
     {/* <Route exact path ="/faq" render={()=><Faq/>} ></Route> */}
    

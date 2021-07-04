@@ -1,9 +1,16 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   // Uncomment the line below to enable the experimental Just-in-Time ("JIT") mode.
   // https://tailwindcss.com/docs/just-in-time-mode
   // mode: "jit",
   theme: {
-    extend: {}
+    extend: {},
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+      '3xl': '1600px',
+      '4xl':'1920px'
+    },
   },
   variants: {
     extend: {
