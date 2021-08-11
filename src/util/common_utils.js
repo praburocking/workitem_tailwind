@@ -11,7 +11,7 @@ export function setCookie(cname, cvalue, exdays) {
     //d.setTime(d.getTime() + (exdays*24*60*60*1000));
     //var expires = "expires="+ d.toUTCString();
     //document.cookie = cname + "=" + cvalue + ";" + expires + ";"+"domain=workmachine.com";
-var baseDomain = '.workmachine.com';//+process.env.REACT_APP_SERVER_URL;
+var baseDomain = '.seyalan.com';//+process.env.REACT_APP_SERVER_URL;
 console.log("baseDomain ",baseDomain)
 var expireAfter = new Date();
  

@@ -5,6 +5,7 @@
   "dependencies": {
     "@headlessui/react": "^1.3.0",
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/styles": "4.11.4",
     "@testing-library/jest-dom": "5.11.10",
@@ -38,8 +39,8 @@
   "scripts": {
     "build:css": "cross-env TAILWIND_MODE=build NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/index.css",
     "watch:css": "cross-env TAILWIND_MODE=watch NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/index.css --watch",
-    "env:dev": "cross-env NODE_ENV=development REACT_APP_SERVER_URL=workmachine.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
-    "env:prod": "cross-env NODE_ENV=production",
+    "env:dev": "cross-env NODE_ENV=development REACT_APP_SERVER_URL=seyalan.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
+    "env:prod": "cross-env NODE_ENV=production REACT_APP_SERVER_URL=seyalan.com REACT_APP_SERVER_PORT=8000 REACT_APP_SERVER_PROTOCOL=http REACT_APP_CLIENT_PORT=3000",
     "react-scripts:start": "react-scripts start",
     "react-scripts:build": "react-scripts build",
     "start": "run-p env:dev watch:css react-scripts:start",

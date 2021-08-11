@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import KanbanBoard from "./kanbanBoard";
 import CalendarView from "./calendar";
+import { withRouter } from "react-router-dom";
 
 const Header = (props) => {
   const [getView, setView] = useState("calendar");
+
+const handleSettings=()=>{
+props.history.push('/settings')
+}
+
   return (
     <div className=" flex flex-col flex-1 min-w-0 overflow-hidden">
       <div className="bg-white-400 sm:border-b-2  h-30 min-w-0">
@@ -11,7 +17,7 @@ const Header = (props) => {
           <div className=" flex justify-between items-center border-b py-1">
             <div className="my-3 flex flex-1 px-1 items-center min-w-0s">
               {/*side bar button*/}
-              <span className="inline lg:hidden mr-3">
+              <span className="inline lg:hidden mr-5">
                 <button onClick={() => props.setSideBar(!props.showSideBar)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +36,7 @@ const Header = (props) => {
                 </button>
               </span>
               <div className=" flex-shrink-1  relative ">
+                <button >
                 <span className="absolute  inset-y-0 left-0 flex items-center pl-1">
                   <svg
                     className="h-5 w-5"
@@ -44,7 +51,9 @@ const Header = (props) => {
                       />
                     </g>
                   </svg>
+                  
                 </span>
+                </button>
                 <input
                   placeholder="Search"
                   className=" pl-8 py-2 outline-none border border-gray-400 rounded-md leading-tight"
@@ -52,20 +61,8 @@ const Header = (props) => {
               </div>
             </div>
             <div div="flex item-center justify-center h-30 flex-shrink-0">
-              <button className=" focus:outline-none h-7 w-7 hover:bg-gray-300 rounded-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#525252"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path>
-                </svg>
+              <button className=" focus:outline-none h-7 w-7 hover:bg-gray-300 " onClick={()=>handleSettings()}>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAAuElEQVRoge3Y0QqDMAwF0DvZx038/x+w/Y/uZUNlChGT3kXugb70IW0MpEFARLxMACqA9lkFwEi90UkFy+W/a44+9OEYq3U448cQGbyH587e0Zf0cjX+pqLpK6AE2NSF2DwTqDt7xTF+uBHb13gG8KLeSG5KU+taaI8+4PpepH8HGNOolalS6SugBNjUhdgYCWhqlWw0PUay9F7K3war9O+A5zTaa4rVNPpX0iegLsRmSUDTo4jEeQPGvDzTx5BsMwAAAABJRU5ErkJggg=="/>
               </button>
               <button className="focus:outline-none mx-2">
                 <img
@@ -228,4 +225,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
