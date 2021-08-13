@@ -8,7 +8,9 @@ import BusinessIcon from '@material-ui/icons/Business';
 const SettingsPage = (props) => {
   const [getView, setView] = useState("calendar");
 
-const handleSettings=()=>{
+const handleSettings=(item)=>{
+  console.log('pushing to','/settings/'+item);
+props.history.push('/settings/'+item);
 
 }
 
@@ -26,9 +28,9 @@ const handleBack=()=>{
       <div className="container text-center text-3xl tracking-widest font-semibold py-2 md:py-5">Settings</div>
       </div >
       <div className="grid grid-cols-3 gap-2 h-full w-full m-5">
-      <div className="bg-red-100 h-full w-full  flex flex-1 justify-center items-center rounded-xl"><div class="flex flex-col items-center"><PersonAddIcon style={{fontSize:60}}/>
+      <button onClick={()=>handleSettings('user')} className="bg-red-100 h-full w-full  flex flex-1 justify-center items-center rounded-xl"><div class="flex flex-col items-center"><PersonAddIcon style={{fontSize:60}}/>
       <div>Users</div>
-      </div></div>
+      </div></button>
       <div className="bg-red-100 h-full w-full  flex flex-1 justify-center items-center rounded-xl"><div class="flex flex-col items-center">
       <BusinessIcon style={{fontSize:60}}/>
       <div>Company Info </div>

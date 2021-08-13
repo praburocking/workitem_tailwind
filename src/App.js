@@ -8,6 +8,7 @@ import { auth as authRepo } from "./store/atoms";
 import {getUser} from './services/connectToServer'
 import LandingPage from './components/landing'
 import SettingsPage from "./components/settingsPage";
+import SettingsListView from './components/settingsListView';
 //import { useRecoilState, useRecoilValue } from "recoil";
 import {
   Switch,
@@ -78,10 +79,14 @@ function App(props) {
     if(names && names!=''){
       return true;
     }else {
+      const domain=getCookie("domain");
+      // window.location.host.contain
+      // if(domain){
+
+      // }
       // const token=getCookie("token");
       // if(token){
-      //     getUsers();
-      //     if(names && names!=''){return true}else {return false}
+     
       // }
       return false;
     }
@@ -95,6 +100,7 @@ function App(props) {
     <Route exact path ="/signup" render={()=>userExist()?<Redirect to="/home"/>:<LoginAndSignup operation="signup"/>} ></Route>
     <Route exact path ="/home" render={()=>userExist()?<Home/>:<Redirect to="/login"/>} ></Route>
     <Route exact path ="/settings" render={()=>userExist()?<SettingsPage/>:<Redirect to="/login"/>} ></Route>
+    <Route exact path ="/settings/:item" render={({match})=>userExist()?<SettingsListView item={match.params.item} />:<Redirect to="/login"/>} ></Route>
     {/* <Route exact path ="/faq" render={()=><Faq/>} ></Route> */}
    
     {/* <Route  render={()=><Redirect to="/pagenotfound"/>} ></Route> */}
