@@ -1,11 +1,25 @@
 import React,{useState} from 'react';
 import { withRouter } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-
+const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+    },
+  });
+  
 const SettingListView=(props)=>{
+    const classes = useStyles();
+  const [value, setValue] = React.useState(0);
     const handleBack=()=>{
         props.history.push('/home');
-      }
+      } 
+      const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
     return(
         <div className="w-screen h-screen flex flex-col">
         <div className="flex items-center">
@@ -26,7 +40,21 @@ const SettingListView=(props)=>{
                 <button className="h-16 bg-red-200 rounded-xl mb-1">pipeline</button>
                
             </div>
-            <div className="flex col-span-3 bg-red-100 mb-5 rounded-xl mr-5"></div>
+            <div className="flex flex-col items-center w-full col-span-3 bg-red-100 mb-5 rounded-xl mr-5" >
+            {/* <Paper className="flex-grow-1 bg-red-100">
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered
+                    >
+                        <Tab label="Item One" className="bg-red-100"/>
+                        <Tab label="Item Two" />
+                        <Tab label="Item Three" />
+                    </Tabs>
+                    </Paper> */}
+            </div>
         </div>
         </div>
        
@@ -35,4 +63,4 @@ const SettingListView=(props)=>{
     );
 }
 
-export default withRouter(SettingListView)
+export default withRouter(SettingListView) //className="flex col-span-3 bg-red-100 mb-5 rounded-xl mr-5"
